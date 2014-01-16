@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<hibernate-mapping package="modele">
+	<class
+		name="Utilisateur"
+		table="utilisateur"
+	>
+		<id
+			name="IdUser"
+			type="integer"
+			column="id_user"
+		>
+			<generator class="increment"/>
+		</id>
+
+		<property
+			name="Passwd"
+			column="passwd"
+			type="string"
+			not-null="true"
+			length="30"
+		/>
+		<property
+			name="Description"
+			column="description"
+			type="string"
+			not-null="false"
+		/>
+		<property
+			name="pseudo"
+			column="pseudo"
+			type="string"
+			not-null="true"
+			length="30"
+			unique="true"
+		/>
+		<property
+			name="Avatar"
+			column="avatar"
+			type="binary"
+			not-null="false"
+		/>
+		<property
+			name="Droit"
+			column="droit"
+			type="integer"
+			not-null="true"
+			length="10"
+		/>
+		<set name="dossiers" table="dossierimage" inverse="true" lazy="false" >
+            <key>
+                <column name="ID_DOSSIERIMAGE" not-null="true" />
+            </key>
+            <one-to-many class="DossierImage" />
+        </set>
+
+	</class>
+</hibernate-mapping>

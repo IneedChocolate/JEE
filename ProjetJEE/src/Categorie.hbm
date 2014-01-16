@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<hibernate-mapping package="modele">
+	<class name="Categorie" table="categorie">
+		<id
+			column="id_categorie"
+			name="id_categorie"
+			type="integer"
+		>
+			<generator class="increment" />
+		</id>
+		<property
+			column="nom"
+			length="30"
+			name="Nom"
+			not-null="true"
+			type="string"
+		/>
+		 
+		<set name="creations" table="creation" inverse="true" lazy="false" >
+            <key>
+                <column name="ID_CREATION" not-null="true" />
+            </key>
+            <one-to-many class="Creation" />
+        </set>
+	</class>
+</hibernate-mapping>

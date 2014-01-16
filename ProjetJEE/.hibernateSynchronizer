@@ -1,0 +1,6 @@
+EnumExclude=categorie
+package=modele
+databaseUrl=jdbc:mysql://127.0.0.1/projet_ntier
+driver=com.mysql.jdbc.Driver
+EnumInclude=
+username=root

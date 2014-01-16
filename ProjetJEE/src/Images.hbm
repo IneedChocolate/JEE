@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<hibernate-mapping package="modele">
+	<class name="Creation" table="creation">
+		<id
+			column="id_Creation"
+			name="id_Creation"
+			type="integer"
+		>
+			<generator class="increment" />
+		</id>
+		<property
+			column="date_publication"
+			length="10"
+			name="DatePublication"
+			not-null="true"
+			type="date"
+		 />
+		<property
+			column="description"
+			name="Description"
+			not-null="false"
+			type="string"
+		 />
+		<property
+			column="image"
+			name="Image"
+			not-null="false"
+			type="binary"
+		 />
+		 
+		<many-to-one name="dossierimage" class="modele.DossierImage" not-null="true">
+            <column name="ID_DOSSIERIMAGE" not-null="true" />
+        </many-to-one>
+        
+        <many-to-one name="categorie" class="modele.Categorie" not-null="true">
+        	<column name="id_categorie" not-null="true" />
+        </many-to-one>
+	</class>
+</hibernate-mapping>
